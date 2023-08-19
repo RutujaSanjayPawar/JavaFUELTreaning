@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 5.3//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="mypack.Employee" table="Emp1" discriminator-value="emp">
+<id name="id">
+<generator class="increment"></generator>
+</id>
+<discriminator column="type" type="String"></discriminator>
+<subclass name="TablePerHierarchy.Regular_Emp" discriminator-value="reg_emp">
+<property name="salary"></property>
+<property name="bonus"></property>
+
+</subclass>
+<subclass name="TablePerHierarchy.Contract_Emp" discriminator-value="con_emp">
+<property name="pay_per_hour"></property>
+<property name="contract_period"></property>
+</subclass>
+
+</class>
+
+</hibernate-mapping>
